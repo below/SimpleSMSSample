@@ -26,4 +26,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)send:(id)sender {
+    
+    NSString *number = self.numberField.text;
+    
+    NSString *strNumber = [[NSString alloc]initWithFormat:@"sms://%@",number];
+    
+    strNumber = [strNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:strNumber]];
+
+}
 @end
