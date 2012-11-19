@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "NSString+URLEncoding.h"
 
 @interface ViewController ()
 
@@ -32,7 +33,8 @@
     
     NSString *strNumber = [[NSString alloc]initWithFormat:@"sms://%@",number];
     
-    strNumber = [strNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
+    strNumber = [[strNumber stringByReplacingOccurrencesOfString:@" " withString:@""]
+                 URLEncodedString];
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:strNumber]];
 
