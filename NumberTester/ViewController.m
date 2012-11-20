@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "NSString+URLEncoding.h"
 
 @interface ViewController ()
 
@@ -31,10 +30,9 @@
     
     NSString *number = self.numberField.text;
     
-    NSString *strNumber = [[NSString alloc]initWithFormat:@"sms://%@",number];
+    NSString *strNumber = [[NSString alloc]initWithFormat:@"sms:%@",number];
     
-    strNumber = [[strNumber stringByReplacingOccurrencesOfString:@" " withString:@""]
-                 URLEncodedString];
+    strNumber = [strNumber stringByReplacingOccurrencesOfString:@" " withString:@""];
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:strNumber]];
 
